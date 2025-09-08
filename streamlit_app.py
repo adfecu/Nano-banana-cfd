@@ -1,8 +1,10 @@
 
+
 import streamlit as st
 from io import BytesIO
 from google import genai
 from google.genai import types
+from utils import get_image_pairs
 
 
 st.title("🍌 Nano Banana CFD")
@@ -17,11 +19,7 @@ col1, col2 = st.columns(2)
 prompt = "Generate a high-resolution image of an airfoil with smooth airflow lines around it. The streamlines CANNOT intersect or overlap, and they should clearly show the airflow pattern around the airfoil."
 
 # Prepare all three input/output image pairs as a single list alternating input/output
-image_pairs = [
-	("examples/airfoil 0 input.png", "examples/airfoil 0 output.png"),
-	("examples/airfoil 10 input.png", "examples/airfoil 10 output.png"),
-	("examples/airfoil 20 input.png", "examples/airfoil 20 output.png"),
-]
+image_pairs = get_image_pairs()
 
 example_parts = []
 for input_path, output_path in image_pairs:
